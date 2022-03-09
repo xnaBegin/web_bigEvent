@@ -41,14 +41,14 @@ $(function () {
 
 $('#form-login').on('submit', function (e) {
     e.preventDefault()
-
     $.ajax({
         url: '/api/login',
         type: 'POST',
         data: $(this).serialize(),
         success: function (res) {
+            // console.log(res.status);
             if (res.status !== 0) {
-                return layer.msg(res.msg)
+                return layer.msg(res.message)
             }
             layer.msg('登录成功')
             localStorage.setItem('token', res.token)
